@@ -19,6 +19,8 @@ static class Code
     public const int pad_Y = 0x8000;
     public const int pad_LB = 0x0100;
     public const int pad_RB = 0x0200;
+    public const int pad_LStick = 0x0040;
+    public const int pad_RStick = 0x0080;
 };
 
 // --------------------------------------------
