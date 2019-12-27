@@ -1,0 +1,12 @@
+LIBRARY DllXInput
+EXPORTS
+	InputJudg_Create	@1
+	InputJudg_Destroy	@2
+	InputJudg_GetGamePadState	@3
+	InputJudg_GetButton	@4
+	InputJudg_GetButtonDown	@5
+	InputJudg_GetButtonUp	@6
+	InputJudg_GetLeftTrigger	@7
+	InputJudg_GetRightTrigger	@8
+	InputJudg_GetLeftAxis	@9
+	InputJudg_GetRightAxis	@10
