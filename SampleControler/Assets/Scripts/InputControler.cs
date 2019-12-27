@@ -93,7 +93,7 @@ public class InputControler
             return 0;
         }
 
-        if (2 == _GetGamePadState(_instance, padNum)) return 0;
+        if (1 != _GetGamePadState(_instance, padNum)) return 0;
 
         return 1;
     }
