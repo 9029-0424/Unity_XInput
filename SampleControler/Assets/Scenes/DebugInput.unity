@@ -171,7 +171,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -182,8 +182,61 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\n\n TRUE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\n
-    1.0\n\n 1.0\n\n 1.0\n\n 1.0\n\n 1.0\n\n-1.0"
+  m_Text: '
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    0
+
+
+    0
+
+
+    0
+
+
+    0
+
+
+    0
+
+
+    0'
 --- !u!222 &83076455
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -251,7 +304,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -262,8 +315,61 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\n\n TRUE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\n
-    1.0\n\n 1.0\n\n 1.0\n\n 1.0\n\n 1.0\n\n-1.0"
+  m_Text: '
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    0
+
+
+    0
+
+
+    0
+
+
+    0
+
+
+    0
+
+
+    0'
 --- !u!222 &274564792
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -437,7 +543,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -448,8 +554,61 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\n\n TRUE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\n
-    1.0\n\n 1.0\n\n 1.0\n\n 1.0\n\n 1.0\n\n-1.0"
+  m_Text: '
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    0
+
+
+    0
+
+
+    0
+
+
+    0
+
+
+    0
+
+
+    0'
 --- !u!222 &516320344
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -617,7 +776,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -659,6 +818,12 @@ MonoBehaviour:
 
 
     START
+
+
+    LSTHICK
+
+
+    RSTHICK
 
 
     LSTHICK_X
@@ -744,7 +909,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -786,6 +951,12 @@ MonoBehaviour:
 
 
     START
+
+
+    LSTHICK
+
+
+    RSTHICK
 
 
     LSTHICK_X
@@ -871,7 +1042,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -913,6 +1084,12 @@ MonoBehaviour:
 
 
     START
+
+
+    LSTHICK
+
+
+    RSTHICK
 
 
     LSTHICK_X
@@ -1064,7 +1241,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -1191,7 +1368,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -1202,8 +1379,61 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\n\n TRUE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\nFALSE\n\n
-    1.0\n\n 1.0\n\n 1.0\n\n 1.0\n\n 1.0\n\n-1.0"
+  m_Text: '
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    FALSE
+
+
+    0
+
+
+    0
+
+
+    0
+
+
+    0
+
+
+    0
+
+
+    0'
 --- !u!222 &1584658761
 CanvasRenderer:
   m_ObjectHideFlags: 0

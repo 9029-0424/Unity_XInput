@@ -1,11 +1,8 @@
 ﻿  InputInterface.cpp
-  InputJudg.cpp
-     ライブラリ D:\18CU0202\制作実習\ぺコストロ\XInput_DLL\VegetableHarzard\DllXInput\x64\Release\DllXInput.lib とオブジェクト D:\18CU0202\制作実習\ぺコストロ\XInput_DLL\VegetableHarzard\DllXInput\x64\Release\DllXInput.exp を作成中
+     ライブラリ D:\Unity_XInput\SampleControler\DllXInput\x64\Release\DllXInput.lib とオブジェクト D:\Unity_XInput\SampleControler\DllXInput\x64\Release\DllXInput.exp を作成中
   コード生成しています。
-d:\18cu0202\制作実習\ぺコストロ\xinput_dll\vegetableharzard\dllxinput\inputinterface.cpp(58): warning C4715: 'InputJudg_GetRightTrigger': 値を返さないコントロール パスがあります。
-d:\18cu0202\制作実習\ぺコストロ\xinput_dll\vegetableharzard\dllxinput\inputinterface.cpp(51): warning C4715: 'InputJudg_GetLeftTrigger': 値を返さないコントロール パスがあります。
-  14 of 23 functions (60.9%) were compiled, the rest were copied from previous compilation.
-    13 functions were new in current compilation
+  2 of 23 functions ( 8.7%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   コード生成が終了しました。
-  DllXInput.vcxproj -> D:\18CU0202\制作実習\ぺコストロ\XInput_DLL\VegetableHarzard\DllXInput\x64\Release\DllXInput.dll
+  DllXInput.vcxproj -> D:\Unity_XInput\SampleControler\DllXInput\x64\Release\DllXInput.dll

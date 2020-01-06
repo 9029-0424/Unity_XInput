@@ -51,6 +51,12 @@ public class DebugInput : MonoBehaviour
             if (input.GetButton(Code.pad_Start)) inputScore[i].text += "  TRUE\n\n";
             else inputScore[i].text += "FALSE\n\n";
 
+            if (input.GetButton(Code.pad_LStick)) inputScore[i].text += "  TRUE\n\n";
+            else inputScore[i].text += "FALSE\n\n";
+
+            if (input.GetButton(Code.pad_RStick)) inputScore[i].text += "  TRUE\n\n";
+            else inputScore[i].text += "FALSE\n\n";
+
             Vector2 inputAxis = input.GetLeftAxis();
 
             inputScore[i].text += inputAxis.x + "\n\n";

@@ -93,9 +93,12 @@ bool InputJudg::GetLeftTrigger()
 {
 	bool isTrigger = false;
 
-	if (gamePadState.Gamepad.bLeftTrigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD)
+	if (padStateNormal)
 	{
-		isTrigger = true;
+		if (gamePadState.Gamepad.bLeftTrigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD)
+		{
+			isTrigger = true;
+		}
 	}
 
 	return isTrigger;
@@ -105,9 +108,12 @@ bool InputJudg::GetRightTrigger()
 {
 	bool isTrigger = false;
 
-	if (gamePadState.Gamepad.bRightTrigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD)
+	if (padStateNormal)
 	{
-		isTrigger = true;
+		if (gamePadState.Gamepad.bRightTrigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD)
+		{
+			isTrigger = true;
+		}
 	}
 
 	return isTrigger;

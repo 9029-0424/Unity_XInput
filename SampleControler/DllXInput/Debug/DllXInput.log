@@ -1,2 +1,10 @@
-﻿     ライブラリ D:\18CU0202\制作実習\ぺコストロ\XInput_DLL\VegetableHarzard\DllXInput\Debug\DllXInput.lib とオブジェクト D:\18CU0202\制作実習\ぺコストロ\XInput_DLL\VegetableHarzard\DllXInput\Debug\DllXInput.exp を作成中
-  DllXInput.vcxproj -> D:\18CU0202\制作実習\ぺコストロ\XInput_DLL\VegetableHarzard\DllXInput\Debug\DllXInput.dll
+﻿  stdafx.cpp
+  dllmain.cpp
+  DllXInput.cpp
+  InputInterface.cpp
+  InputJudg.cpp
+  コードを生成中...
+d:\unity_xinput\samplecontroler\dllxinput\inputinterface.cpp(51): warning C4715: 'InputJudg_GetLeftTrigger': 値を返さないコントロール パスがあります。
+d:\unity_xinput\samplecontroler\dllxinput\inputinterface.cpp(58): warning C4715: 'InputJudg_GetRightTrigger': 値を返さないコントロール パスがあります。
+     ライブラリ D:\Unity_XInput\SampleControler\DllXInput\Debug\DllXInput.lib とオブジェクト D:\Unity_XInput\SampleControler\DllXInput\Debug\DllXInput.exp を作成中
+  DllXInput.vcxproj -> D:\Unity_XInput\SampleControler\DllXInput\Debug\DllXInput.dll

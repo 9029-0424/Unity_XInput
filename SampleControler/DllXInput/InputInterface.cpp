@@ -47,14 +47,14 @@ bool _stdcall InputJudg_GetLeftTrigger(InputJudg* instance)
 {
 	if (instance == nullptr)	return false;
 
-	instance->GetLeftTrigger();
+	return instance->GetLeftTrigger();
 }
 
 bool _stdcall InputJudg_GetRightTrigger(InputJudg* instance)
 {
 	if (instance == nullptr)	return false;
 
-	instance->GetRightTrigger();
+	return instance->GetRightTrigger();
 }
 
 Vector2 _stdcall InputJudg_GetLeftAxis(InputJudg* instance)
