@@ -11,8 +11,8 @@ class InputJudg
 {
 	XINPUT_STATE gamePadState;
 	bool padStateNormal = false;
-	int lastTimeButtons[4] = {0x00, 0x00, 0x00, 0x00};
-	int* lastTimeButton = &lastTimeButtons[0];
+	WORD lastTimeButtons[4] = {0x00, 0x00, 0x00, 0x00};
+	WORD* lastTimeButton = &lastTimeButtons[0];
 
 public:
 	InputJudg();

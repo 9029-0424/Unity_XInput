@@ -51,15 +51,15 @@ bool InputJudg::GetButtonDown(const int judgButton = 0x1000)
 	{
 		if (gamePadState.Gamepad.wButtons & judgButton)
 		{
-			if (*lastTimeButton != judgButton)
+			if ((*lastTimeButton & judgButton) != judgButton)
 			{
 				isDownButton = true;
-				*lastTimeButton = judgButton;
+				*lastTimeButton |= judgButton;
 			}
 		}
 		else
 		{
-			*lastTimeButton = 0x00;
+			*lastTimeButton &= ~judgButton;
 		}
 	}
 
@@ -74,15 +74,15 @@ bool InputJudg::GetButtonUp(const int judgButton = 0x00)
 	{
 		if (gamePadState.Gamepad.wButtons & judgButton)
 		{
-			if (*lastTimeButton != judgButton)
+			if ((*lastTimeButton & judgButton) != judgButton)
 			{
-				*lastTimeButton = judgButton;
+				*lastTimeButton |= judgButton;
 			}
 		}
-		else if(*lastTimeButton == judgButton)
+		else if ((*lastTimeButton & judgButton) == judgButton)
 		{
 			isUpButton = true;
-			*lastTimeButton = 0x00;
+			*lastTimeButton &= ~judgButton;
 		}
 	}
 
