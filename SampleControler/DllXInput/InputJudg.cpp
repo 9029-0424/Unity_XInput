@@ -3,6 +3,21 @@
 
 InputJudg::InputJudg()
 {
+	XINPUT_STATE gamePadState;
+	for (int i = 0; i < PADCOUNTMAX; ++i)
+	{
+		ZeroMemory(&gamePadState, sizeof(XINPUT_STATE));
+		DWORD dwResult = XInputGetState(i, &gamePadState);
+
+		if (dwResult == ERROR_SUCCESS)
+		{
+			gamePadStates.push_back(gamePadState);
+			padNumbers.push_back(i);
+			padStateNormals.push_back(false);
+			lastTimeButtons.push_back(0x0000);
+		}
+	}
+	ShowCursor(false);
 }
 
 
@@ -10,32 +25,48 @@ InputJudg::~InputJudg()
 {
 }
 
-int InputJudg::GetGamePadState(const DWORD padNum = 0)
+int InputJudg::GetGamePadState()
 {
-	ZeroMemory(&gamePadState, sizeof(XINPUT_STATE));
-
-	DWORD dwResult = XInputGetState(padNum, &gamePadState);
-
-	if (dwResult == ERROR_SUCCESS)
+	XINPUT_STATE gamePadState;
+	for (int i = 0; i < padNumbers.size(); ++i)
 	{
-		padStateNormal = true;
-		lastTimeButton = &lastTimeButtons[padNum];
-		return 1;
+		ZeroMemory(&gamePadState, sizeof(XINPUT_STATE));
+
+		DWORD dwResult = XInputGetState(padNumbers[i], &gamePadState);
+
+		if (dwResult == ERROR_SUCCESS)
+		{
+			gamePadStates[i] = gamePadState;
+			padStateNormals[i] = true;
+		}
+		else
+		{
+			ShowCursor(true);
+			gamePadStates[i] = gamePadState;
+			padStateNormals[i] = false;
+			int id = MessageBox(0, L"コントローラーの接続が切れました。ゲームを終了しますか？", NULL, MB_OKCANCEL | MB_ICONQUESTION);
+			switch (id)
+			{
+				case IDOK:
+					MessageBox(0, L"ゲームを終了します。", NULL, MB_ICONEXCLAMATION);
+					return 0;
+
+				default:
+					ShowCursor(false);
+					--i;
+			}
+		}
 	}
-	else
-	{
-		padStateNormal = false;
-		return 2;
-	}
+	return 1;
 }
 
-bool InputJudg::GetButton(const int judgButton = 0x00)
+bool InputJudg::GetButton(const WORD padNum = 0, const int judgButton = 0x00)
 {
 	bool isButton = false;
 
-	if (padStateNormal)
+	if (padStateNormals[padNum])
 	{
-		if (gamePadState.Gamepad.wButtons & judgButton)
+		if (gamePadStates[padNum].Gamepad.wButtons & judgButton)
 		{
 			isButton = true;
 		}
@@ -44,58 +75,58 @@ bool InputJudg::GetButton(const int judgButton = 0x00)
 	return isButton;
 }
 
-bool InputJudg::GetButtonDown(const int judgButton = 0x1000)
+bool InputJudg::GetButtonDown(const WORD padNum = 0, const int judgButton = 0x1000)
 {
 	bool isDownButton = false;
-	if (padStateNormal)
+	if (padStateNormals[padNum])
 	{
-		if (gamePadState.Gamepad.wButtons & judgButton)
+		if (gamePadStates[padNum].Gamepad.wButtons & judgButton)
 		{
-			if ((*lastTimeButton & judgButton) != judgButton)
+			if (lastTimeButtons[padNum] != judgButton)
 			{
 				isDownButton = true;
-				*lastTimeButton |= judgButton;
+				lastTimeButtons[padNum] |= judgButton;
 			}
 		}
 		else
 		{
-			*lastTimeButton &= ~judgButton;
+			lastTimeButtons[padNum] &= ~judgButton;
 		}
 	}
 
 	return isDownButton;
 }
 
-bool InputJudg::GetButtonUp(const int judgButton = 0x00)
+bool InputJudg::GetButtonUp(const WORD padNum = 0, const int judgButton = 0x00)
 {
 	bool isUpButton = false;
 
-	if (padStateNormal)
+	if (padStateNormals[padNum])
 	{
-		if (gamePadState.Gamepad.wButtons & judgButton)
+		if (gamePadStates[padNum].Gamepad.wButtons & judgButton)
 		{
-			if ((*lastTimeButton & judgButton) != judgButton)
+			if (lastTimeButtons[padNum] != judgButton)
 			{
-				*lastTimeButton |= judgButton;
+				lastTimeButtons[padNum] |= judgButton;
 			}
 		}
-		else if ((*lastTimeButton & judgButton) == judgButton)
+		else if (lastTimeButtons[padNum] == judgButton)
 		{
 			isUpButton = true;
-			*lastTimeButton &= ~judgButton;
+			lastTimeButtons[padNum] &= ~judgButton;
 		}
 	}
 
 	return isUpButton;
 }
 
-bool InputJudg::GetLeftTrigger()
+bool InputJudg::GetLeftTrigger(const WORD padNum = 0)
 {
 	bool isTrigger = false;
 
-	if (padStateNormal)
+	if (padStateNormals[padNum])
 	{
-		if (gamePadState.Gamepad.bLeftTrigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD)
+		if (gamePadStates[padNum].Gamepad.bLeftTrigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD)
 		{
 			isTrigger = true;
 		}
@@ -104,13 +135,13 @@ bool InputJudg::GetLeftTrigger()
 	return isTrigger;
 }
 
-bool InputJudg::GetRightTrigger()
+bool InputJudg::GetRightTrigger(const WORD padNum = 0)
 {
 	bool isTrigger = false;
 
-	if (padStateNormal)
+	if (padStateNormals[padNum])
 	{
-		if (gamePadState.Gamepad.bRightTrigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD)
+		if (gamePadStates[padNum].Gamepad.bRightTrigger > XINPUT_GAMEPAD_TRIGGER_THRESHOLD)
 		{
 			isTrigger = true;
 		}
@@ -119,26 +150,26 @@ bool InputJudg::GetRightTrigger()
 	return isTrigger;
 }
 
-Vector2 InputJudg::GetLeftAxis()
+Vector2 InputJudg::GetLeftAxis(const WORD padNum = 0)
 {
 	Vector2 input = { 0.0f, 0.0f };
 
-	if (padStateNormal)
+	if (padStateNormals[padNum])
 	{
-		if (gamePadState.Gamepad.sThumbLY >= XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE)
+		if (gamePadStates[padNum].Gamepad.sThumbLY >= XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE)
 		{
 			input.y += 1.0f;
 		}
-		else if (gamePadState.Gamepad.sThumbLY <= -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE)
+		if (gamePadStates[padNum].Gamepad.sThumbLY <= -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE)
 		{
 			input.y -= 1.0f;
 		}
 
-		if (gamePadState.Gamepad.sThumbLX >= XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE)
+		if (gamePadStates[padNum].Gamepad.sThumbLX >= XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE)
 		{
 			input.x += 1.0f;
 		}
-		else if (gamePadState.Gamepad.sThumbLX <= -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE)
+		if (gamePadStates[padNum].Gamepad.sThumbLX <= -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE)
 		{
 			input.x -= 1.0f;
 		}
@@ -147,26 +178,26 @@ Vector2 InputJudg::GetLeftAxis()
 	return input;
 }
 
-Vector2 InputJudg::GetRightAxis()
+Vector2 InputJudg::GetRightAxis(const WORD padNum = 0)
 {
 	Vector2 input = { 0.0f, 0.0f };
 
-	if (padStateNormal)
+	if (padStateNormals[padNum])
 	{
-		if (gamePadState.Gamepad.sThumbRY >= XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE)
+		if (gamePadStates[padNum].Gamepad.sThumbRY >= XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE)
 		{
 			input.y += 1.0f;
 		}
-		else if (gamePadState.Gamepad.sThumbRY <= -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE)
+		if (gamePadStates[padNum].Gamepad.sThumbRY <= -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE)
 		{
 			input.y -= 1.0f;
 		}
 
-		if (gamePadState.Gamepad.sThumbRX >= XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE)
+		if (gamePadStates[padNum].Gamepad.sThumbRX >= XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE)
 		{
 			input.x += 1.0f;
 		}
-		else if (gamePadState.Gamepad.sThumbRX <= -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE)
+		if (gamePadStates[padNum].Gamepad.sThumbRX <= -XINPUT_GAMEPAD_LEFT_THUMB_DEADZONE)
 		{
 			input.x -= 1.0f;
 		}

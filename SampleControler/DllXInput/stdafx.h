@@ -16,5 +16,7 @@
 // プログラムに必要な追加ヘッダーをここで参照してください
 #include <Windows.h>
 #include <XInput.h>
+#include <vector>
+using namespace std;
 
 #pragma comment (lib, "xinput.lib")

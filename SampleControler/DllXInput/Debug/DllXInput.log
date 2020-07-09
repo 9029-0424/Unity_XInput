@@ -1,8 +1,0 @@
-﻿  stdafx.cpp
-  dllmain.cpp
-  DllXInput.cpp
-  InputInterface.cpp
-  InputJudg.cpp
-  コードを生成中...
-     ライブラリ D:\Unity_XInput\SampleControler\DllXInput\Debug\DllXInput.lib とオブジェクト D:\Unity_XInput\SampleControler\DllXInput\Debug\DllXInput.exp を作成中
-  DllXInput.vcxproj -> D:\Unity_XInput\SampleControler\DllXInput\Debug\DllXInput.dll

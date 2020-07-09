@@ -15,58 +15,58 @@ void _stdcall InputJudg_Destroy(InputJudg* instance)
 	return;
 }
 
-int _stdcall InputJudg_GetGamePadState(InputJudg* instance, const DWORD padNum = 0)
+int _stdcall InputJudg_GetGamePadState(InputJudg* instance)
 {
 	if (instance == nullptr)	0;
 
-	return	instance->GetGamePadState(padNum);
+	return	instance->GetGamePadState();
 }
 
-bool _stdcall InputJudg_GetButton(InputJudg* instance, const int judgButton = 0x00)
+bool _stdcall InputJudg_GetButton(InputJudg* instance, const DWORD padNum = 0, const int judgButton = 0x00)
 {
 	if (instance == nullptr)	return false;
 
-	return instance->GetButton(judgButton);
+	return instance->GetButton(padNum, judgButton);
 }
 
-bool _stdcall InputJudg_GetButtonDown(InputJudg* instance, const int judgButton = 0x00)
+bool _stdcall InputJudg_GetButtonDown(InputJudg* instance, const DWORD padNum = 0, const int judgButton = 0x00)
 {
 	if (instance == nullptr)	return false;
 
-	return instance->GetButtonDown(judgButton);
+	return instance->GetButtonDown(padNum, judgButton);
 }
 
-bool _stdcall InputJudg_GetButtonUp(InputJudg* instance, const int judgButton = 0x00)
+bool _stdcall InputJudg_GetButtonUp(InputJudg* instance, const DWORD padNum = 0, const int judgButton = 0x00)
 {
 	if (instance == nullptr)	return false;
 
-	return instance->GetButtonUp(judgButton);
+	return instance->GetButtonUp(padNum, judgButton);
 }
 
-bool _stdcall InputJudg_GetLeftTrigger(InputJudg* instance)
+bool _stdcall InputJudg_GetLeftTrigger(InputJudg* instance, const DWORD padNum = 0)
 {
 	if (instance == nullptr)	return false;
 
-	return instance->GetLeftTrigger();
+	return instance->GetLeftTrigger(padNum);
 }
 
-bool _stdcall InputJudg_GetRightTrigger(InputJudg* instance)
+bool _stdcall InputJudg_GetRightTrigger(InputJudg* instance, const DWORD padNum = 0)
 {
 	if (instance == nullptr)	return false;
 
-	return instance->GetRightTrigger();
+	return instance->GetRightTrigger(padNum);
 }
 
-Vector2 _stdcall InputJudg_GetLeftAxis(InputJudg* instance)
+Vector2 _stdcall InputJudg_GetLeftAxis(InputJudg* instance, const DWORD padNum = 0)
 {
 	if (instance == nullptr)	return Vector2{ 0.0f, 0.0f };
 
-	return instance->GetLeftAxis();
+	return instance->GetLeftAxis(padNum);
 }
 
-Vector2 _stdcall InputJudg_GetRightAxis(InputJudg* instance)
+Vector2 _stdcall InputJudg_GetRightAxis(InputJudg* instance, const DWORD padNum = 0)
 {
 	if (instance == nullptr)	return Vector2{ 0.0f, 0.0f };
 
-	return instance->GetRightAxis();
+	return instance->GetRightAxis(padNum);
 }

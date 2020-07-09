@@ -1,5 +1,17 @@
-﻿     ライブラリ D:\Unity_XInput\SampleControler\DllXInput\x64\Release\DllXInput.lib とオブジェクト D:\Unity_XInput\SampleControler\DllXInput\x64\Release\DllXInput.exp を作成中
+﻿  stdafx.cpp
+  dllmain.cpp
+  DllXInput.cpp
+  InputInterface.cpp
+d:\unity_xinput\samplecontroler\dllxinput\inputinterface.cpp(29): warning C4244: '引数': 'const DWORD' から 'const WORD' への変換です。データが失われる可能性があります。
+d:\unity_xinput\samplecontroler\dllxinput\inputinterface.cpp(36): warning C4244: '引数': 'const DWORD' から 'const WORD' への変換です。データが失われる可能性があります。
+d:\unity_xinput\samplecontroler\dllxinput\inputinterface.cpp(43): warning C4244: '引数': 'const DWORD' から 'const WORD' への変換です。データが失われる可能性があります。
+d:\unity_xinput\samplecontroler\dllxinput\inputinterface.cpp(50): warning C4244: '引数': 'const DWORD' から 'const WORD' への変換です。データが失われる可能性があります。
+d:\unity_xinput\samplecontroler\dllxinput\inputinterface.cpp(57): warning C4244: '引数': 'const DWORD' から 'const WORD' への変換です。データが失われる可能性があります。
+d:\unity_xinput\samplecontroler\dllxinput\inputinterface.cpp(64): warning C4244: '引数': 'const DWORD' から 'const WORD' への変換です。データが失われる可能性があります。
+d:\unity_xinput\samplecontroler\dllxinput\inputinterface.cpp(71): warning C4244: '引数': 'const DWORD' から 'const WORD' への変換です。データが失われる可能性があります。
+  InputJudg.cpp
+     ライブラリ D:\Unity_XInput\SampleControler\DllXInput\x64\Release\DllXInput.lib とオブジェクト D:\Unity_XInput\SampleControler\DllXInput\x64\Release\DllXInput.exp を作成中
   コード生成しています。
-  All 23 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 327 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   コード生成が終了しました。
   DllXInput.vcxproj -> D:\Unity_XInput\SampleControler\DllXInput\x64\Release\DllXInput.dll

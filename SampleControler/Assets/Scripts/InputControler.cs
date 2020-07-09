@@ -21,6 +21,7 @@ static class Code
     public const int pad_RB = 0x0200;
     public const int pad_LStick = 0x0040;
     public const int pad_RStick = 0x0080;
+    public const int pad_AllButton = 0xffff;
 };
 
 // --------------------------------------------
@@ -37,28 +38,28 @@ public class InputControler
     private static extern void _Destroy(IntPtr instance);
 
     [DllImport("DllXInput", EntryPoint = "InputJudg_GetGamePadState")]
-    private static extern int _GetGamePadState(IntPtr instance, long padNum = 0);
+    private static extern int _GetGamePadState(IntPtr instance);
 
     [DllImport("DllXInput", EntryPoint = "InputJudg_GetButton")]
-    private static extern bool _GetButton(IntPtr instance, int judgButton = 0x00);
+    private static extern bool _GetButton(IntPtr instance, long padNum = 0, int judgButton = 0x00);
 
     [DllImport("DllXInput", EntryPoint = "InputJudg_GetButtonDown")]
-    private static extern bool _GetButtonDown(IntPtr instance, int judgButton = 0x1000);
+    private static extern bool _GetButtonDown(IntPtr instance, long padNum = 0, int judgButton = 0x1000);
 
     [DllImport("DllXInput", EntryPoint = "InputJudg_GetButtonUp")]
-    private static extern bool _GetButtonUp(IntPtr instance, int judgButton = 0x00);
+    private static extern bool _GetButtonUp(IntPtr instance, long padNum = 0, int judgButton = 0x00);
 
     [DllImport("DllXInput", EntryPoint = "InputJudg_GetLeftTrigger")]
-    private static extern bool _GetLeftTrigger(IntPtr instance);
+    private static extern bool _GetLeftTrigger(IntPtr instance, long padNum = 0);
 
     [DllImport("DllXInput", EntryPoint = "InputJudg_GetRightTrigger")]
-    private static extern bool _GetRightTrigger(IntPtr instance);
+    private static extern bool _GetRightTrigger(IntPtr instance, long padNum = 0);
 
     [DllImport("DllXInput", EntryPoint = "InputJudg_GetLeftAxis")]
-    private static extern Vector2 _GetLeftAxis(IntPtr instance);
+    private static extern Vector2 _GetLeftAxis(IntPtr instance, long padNum = 0);
 
     [DllImport("DllXInput", EntryPoint = "InputJudg_GetRightAxis")]
-    private static extern Vector2 _GetRightAxis(IntPtr instance);
+    private static extern Vector2 _GetRightAxis(IntPtr instance, long padNum = 0);
 
     // 外部クラスの作成
     public InputControler()
@@ -86,92 +87,95 @@ public class InputControler
     }
 
     // コントローラーの状態を取得
-    public int GetGamePadState(long padNum = 0)
+    public int GetGamePadState()
     {
         if (IsDestroyed())
         {
             return 0;
         }
 
-        if (1 != _GetGamePadState(_instance, padNum)) return 0;
+        if (1 != _GetGamePadState(_instance))
+        {
+            UnityEngine.Application.Quit();
+        }
 
         return 1;
     }
 
     // 指定したボタンが押されているかの判定
-    public bool GetButton(int judgButton = 0x1000)
+    public bool GetButton(long padNum = 0, int judgButton = 0x1000)
     {
         if (IsDestroyed())
         {
             return false;
         }
 
-        return _GetButton(_instance, judgButton);
+        return _GetButton(_instance, padNum, judgButton);
     }
 
     // 指定したボタンが押されたかの判定
-    public bool GetButtonDown(int judgButton = 0x1000)
+    public bool GetButtonDown(long padNum = 0, int judgButton = 0x1000)
     {
         if (IsDestroyed())
         {
             return false;
         }
 
-        return _GetButtonDown(_instance, judgButton);
+        return _GetButtonDown(_instance, padNum, judgButton);
     }
 
     // 指定したボタンが放されたかの判定
-    public bool GetButtonUp(int judgButton = 0x1000)
+    public bool GetButtonUp(long padNum = 0, int judgButton = 0x1000)
     {
         if (IsDestroyed())
         {
             return false;
         }
 
-        return _GetButtonUp(_instance, judgButton);
+        return _GetButtonUp(_instance, padNum, judgButton);
     }
 
     // 左トリガーの判定
-    public bool GetLeftTrigger()
+    public bool GetLeftTrigger(long padNum = 0)
     {
         if (IsDestroyed())
         {
             return false;
         }
 
-        return _GetLeftTrigger(_instance);
+        return _GetLeftTrigger(_instance, padNum);
     }
 
     // 右トリガーの判定
-    public bool GetRightTrigger()
+    public bool GetRightTrigger(long padNum = 0)
     {
         if (IsDestroyed())
         {
             return false;
         }
 
-        return _GetRightTrigger(_instance);
+        return _GetRightTrigger(_instance, padNum);
     }
 
     // 左スティックの判定
-    public Vector2 GetLeftAxis()
+    public Vector2 GetLeftAxis(long padNum = 0)
     {
         if (IsDestroyed())
         {
             return new Vector2(0.0f, 0.0f);
         }
 
-        return _GetLeftAxis(_instance);
+        return _GetLeftAxis(_instance, padNum);
     }
 
     // 右スティックの判定
-    public Vector2 GetRightAxis()
+    public Vector2 GetRightAxis(long padNum = 0)
     {
         if (IsDestroyed())
         {
             return new Vector2(0.0f, 0.0f);
         }
 
-        return _GetRightAxis(_instance);
+        return _GetRightAxis(_instance, padNum);
     }
 }

@@ -1,6 +1,8 @@
 #ifndef InputJudg_hpp
 #define INputJudg_hpp
 
+#define PADCOUNTMAX 4
+
 struct Vector2
 {
 	float x;
@@ -9,26 +11,27 @@ struct Vector2
 
 class InputJudg
 {
-	XINPUT_STATE gamePadState;
-	bool padStateNormal = false;
-	WORD lastTimeButtons[4] = {0x00, 0x00, 0x00, 0x00};
-	WORD* lastTimeButton = &lastTimeButtons[0];
+	vector<XINPUT_STATE> gamePadStates;
+	vector<bool> padStateNormals;
+	vector<WORD> lastTimeButtons;
+	WORD* lastTimeButton;
+	vector<int> padNumbers;
 
 public:
 	InputJudg();
 	~InputJudg();
 
-	int GetGamePadState(const DWORD);
+	int GetGamePadState();
 
-	bool GetButton(const int);
-	bool GetButtonDown(const int);
-	bool GetButtonUp(const int);
+	bool GetButton(const WORD,const int);
+	bool GetButtonDown(const WORD, const int);
+	bool GetButtonUp(const WORD, const int);
 
-	bool GetLeftTrigger();
-	bool GetRightTrigger();
+	bool GetLeftTrigger(const WORD);
+	bool GetRightTrigger(const WORD);
 
-	Vector2 GetLeftAxis();
-	Vector2 GetRightAxis();
+	Vector2 GetLeftAxis(const WORD);
+	Vector2 GetRightAxis(const WORD);
 };
 
 #endif /* InputJudg_hpp */
